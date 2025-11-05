@@ -82,9 +82,9 @@ public class Tirgul1 {
         System.out.println("enter C for circumference or A for area");
         String x = scan.next().toLowerCase();
         if(x.equals("a")){
-            System.out.println("area: " + (3.14 * r * r));
+            System.out.println("area: " + (Math.PI * r * r));
         } else if (x.equals("c")) {
-            System.out.println("circumference: " + (3.14 * r * 2));
+            System.out.println("circumference: " + (Math.PI * r * 2));
         }
         else {
             System.out.println("bad input");

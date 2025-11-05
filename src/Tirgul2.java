@@ -1,10 +1,8 @@
+import java.util.Random;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Tirgul2 {
-    public static void main(String[] args) {
-        problem10();
-    }
-
     public static void problem1a(){
         Scanner scan = new Scanner(System.in);
         System.out.println("enter N");
@@ -112,9 +110,15 @@ public class Tirgul2 {
         float b = scan.nextFloat();
         System.out.println("enter c");
         float c = scan.nextFloat();
-        double squareRoot = Math.sqrt(b*b - 4*a*c);
-        System.out.println("X1 = " + ((-b - squareRoot) / 2*a));
-        System.out.println("X2 = " + ((-b + squareRoot) / 2*a));
+        double discriminant = b*b - 4*a*c;
+        if (discriminant < 0){
+            System.out.println("no roots");
+        }
+        else{
+            double squareRoot = Math.sqrt(discriminant);
+            System.out.println("X1 = " + ((-b - squareRoot) / 2*a));
+            System.out.println("X2 = " + ((-b + squareRoot) / 2*a));
+        }
     }
 
     public static void problem8(){
@@ -159,5 +163,167 @@ public class Tirgul2 {
         else{
             System.out.println("not long enough");
         }
+    }
+
+    public static void problem11(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("enter N");
+        int n = scan.nextInt();
+        if (n % 2 == 1){
+            for (int i = 1; i <= n; i+=2) {
+                for (int j = 0; j < (n-i)/2; j++) {
+                    System.out.print(' ');
+                }
+                for (int j = 0; j < i; j++) {
+                    System.out.print('*');
+                }
+                System.out.println();
+            }
+        }
+        else {
+            for (int i = 2; i <= n; i+=2) {
+                for (int j = 0; j < (n-i)/2; j++) {
+                    System.out.print(' ');
+                }
+                for (int j = 0; j < i; j++) {
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+        }
+
+    }
+
+    public static void problem12(){
+        for (int i = 1; i <= 100; i++){
+            String s = "";
+            if (i < 10){
+                s += " ";
+            }
+            s += i + " ";
+            System.out.print(s);
+            if (i % 10 == 0){
+                System.out.println();
+            }
+        }
+    }
+
+    public static void problem13(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("enter N");
+        int n = scan.nextInt();
+        for (int i = 0; i < n; i++){
+            System.out.print('*');
+        }
+        System.out.println();
+        for (int i = 0; i < n - 2; i++){
+            System.out.print('*');
+            for (int j = 0; j < n - 2; j++){
+                System.out.print(' ');
+            }
+            System.out.println('*');
+        }
+        for (int i = 0; i < n; i++){
+            System.out.print('*');
+        }
+    }
+
+    public static void problem14(){
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        for (int i = 1; i <= n; i++){
+            for (int j = 1; j <= n; j++){
+                if (i * j < 10) System.out.print(" ");
+                System.out.print(i * j + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void problem15(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("enter string");
+        String s = scan.next().toLowerCase();
+        int len = s.length();
+        boolean palindrome = true;
+        for (int i = 0; i < len; i++){
+            if (s.charAt(i) != s.charAt(len - i - 1)){
+                palindrome = false;
+                break;
+            }
+        }
+        if (palindrome){
+            System.out.println("palindrome");
+        }
+        else {
+            System.out.println("not a palindrome");
+        }
+    }
+
+    public static void problem16(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("enter number");
+        int n = scan.nextInt();
+        int sum = 0;
+        for (int i = 1; i < n; i++){
+            if (n % i == 0){
+                sum += i;
+            }
+        }
+        if (sum == n){
+            System.out.println("perfect number");
+        }else {
+            System.out.println("not perfect");
+        }
+    }
+
+    public static void problem17(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("enter number");
+        int n = scan.nextInt();
+        int d = n % 10;
+        n /= 10;
+        boolean mono = true;
+        while (n > 0 && mono){
+            if (n % 10 > d){
+                mono = false;
+            }
+            d = n % 10;
+            n /= 10;
+        }
+        if (mono){
+            System.out.println("monotone");
+        }else{
+            System.out.println("not monotone");
+        }
+    }
+
+    public static void problem18(){
+        Scanner scan = new Scanner(System.in);
+        Random r = new Random();
+        System.out.println("enter number");
+        int n = scan.nextInt();
+        for (int i = 0; i < n; i++){
+            System.out.print(r.nextInt(1, 7) + " ");
+        }
+    }
+
+    public static void problem19(){
+        Random r = new Random();
+        int n = r.nextInt(1, 101);
+        Scanner scan = new Scanner(System.in);
+        int guess = 0, count = 0;
+        while (guess != n){
+            System.out.println("guess a number:");
+            guess = scan.nextInt();
+            count++;
+            if (guess < n) System.out.println("too small");
+            if (guess > n) System.out.println("too big");
+        }
+        System.out.println("you got it! the number was " + n + "\ntook you " + count + " guesses.");
+    }
+
+    public static void main(String[] args) {
+        problem19();
     }
 }
