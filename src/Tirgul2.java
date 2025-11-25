@@ -127,8 +127,7 @@ public class Tirgul2 {
         int n = scan.nextInt();
         long ans = 1;
         while (n > 1){
-            ans *= n;
-            n--;
+            ans *= n--;
         }
         System.out.println(ans);
     }
@@ -265,7 +264,7 @@ public class Tirgul2 {
         System.out.println("enter number");
         int n = scan.nextInt();
         int sum = 0;
-        for (int i = 1; i < n; i++){
+        for (int i = 1; i <= n / 2; i++){
             if (n % i == 0){
                 sum += i;
             }
@@ -324,6 +323,6 @@ public class Tirgul2 {
     }
 
     public static void main(String[] args) {
-        problem19();
+        problem16();
     }
 }
