@@ -76,9 +76,10 @@ public class Tirgul4 {
         int[][] transposed = new int[N][M];
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < N; j++) {
-                transposed[j][i] = matrix[i][j];
+                transposed[j][i] = matrix[i][j] + 1;
             }
         }
+
         return transposed;
     }
 

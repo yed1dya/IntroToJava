@@ -1,14 +1,34 @@
-import java.util.Arrays;
+import thursday.*;
+import thursday.Polygon;
+import thursday.Rectangle;
+
+import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-//        int[][] arrs = {new int[]{5, 7, 8, 10, 11, 12, 13, 2, 4}, new int[]{0},
-//        new int[]{6, 2}, new int[]{5, 6, 7, 8, 4}, new int[]{5, 6, 7, 8}};
-//        for (int[] A : arrs){
-//            System.out.println(Tirgul5.NumberOfRotationBinarySearch(A) - Tirgul5.NumberOfRotationLinear(A));
-//        }
-        int[][] arrs2 = {{0,1,1,2}, {0,1,2,2}, {0,1,2,3}, {0,0,1,2}, {1,1}, {0,1},
-                {0,1,1}, {0,0,1}, {1,2,3,3,3,4,}, {1,2,3,3,3,4,5}};
-        for (int[] b : arrs2) System.out.println(Arrays.toString(b) + "  " + Tirgul5.MoreThanHalf(b));
+        Point p1 = new Point(1, 2), p2 = new Point(3, 4);
+        Square s1 = new Square(p1, 5), s2 = new Square(p2, 2);
+        System.out.println(s1.area());
+        Square[] squares = {s1, s2};
+        Rectangle r1 = new Rectangle(p1, p2);
+
+        Rectangle[] rectangles = {s1, s2, r1};
+
+        Triangle t1 = new Triangle();
+
+        Polygon[] polygons = {t1, r1, s1, s2};
+
+        Circle c1 = new Circle(p1, 4.5);
+
+        shape[] shapes = {s1, s2, r1, c1};
+
+        for (shape shape : shapes) {
+            System.out.println(shape.area());
+        }
+
+        for (Polygon polygon : polygons) {
+            polygon.rotate(34, new Point());
+        }
+
     }
 }

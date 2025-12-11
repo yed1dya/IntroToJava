@@ -83,7 +83,7 @@ public class Tirgul4Test {
         int[][] original = {{1, 2, 3}, {4, 5, 6}}; // 2x3 matrix
         int[][] expected = {{1, 4}, {2, 5}, {3, 6}}; // 3x2 matrix
         int[][] actual = Tirgul4.transpose(original);
-        assertTrue(Arrays.deepEquals(expected, actual));
+        assertArrayEquals(expected, actual);
     }
 
     @Test
