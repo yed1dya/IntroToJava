@@ -1,5 +1,7 @@
 package thursday;
 
+import org.junit.jupiter.api.Test;
+
 import java.awt.*;
 
 public class Square extends Rectangle{

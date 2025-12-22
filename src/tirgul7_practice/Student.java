@@ -1,6 +1,16 @@
 package tirgul7_practice;
 
 public class Student {
+
+    public Student() {
+
+    }
+
+    public Student(Student student) {
+        this.ID = student.getID();
+        this.name = student.getName();
+    }
+
     public int getID() {
         return ID;
     }

@@ -1,7 +1,9 @@
 package thursday;
 
-public class Triangle extends Polygon{
-    @Override
+public class Triangle implements shape {
+
+    // TODO
+
     public double area() {
         return 0;
     }

@@ -2,7 +2,7 @@ package thursday;
 
 import java.awt.*;
 
-public class Rectangle extends Polygon{
+public class Rectangle implements shape{
 
     protected Point min, max;
 
