@@ -1,22 +1,22 @@
 package tirgul8;
 
 public class IntList {
-    IntNode head;
+    IntNode first;
 
     public void reverse() {
         IntNode prev = null;
-        IntNode curr = head;
+        IntNode curr = first;
         while (curr != null) {
-            IntNode nextNode = curr.getNext(); // Save next node
-            curr.setNext(prev);                // Reverse pointer
-            prev = curr;                       // Advance prev
-            curr = nextNode;                   // Advance curr
+            first = first.getNext();
+            curr.setNext(prev);
+            prev = curr;
+            curr = first;
         }
-        head = prev; // Update head to the new front
+        first = prev;
     }
 
     public void reverseRec() {
-        head = reverseRecHelp(head);
+        first = reverseRecHelp(first);
     }
 
     private IntNode reverseRecHelp(IntNode current) {
@@ -45,7 +45,7 @@ public class IntList {
     
     public IntList copyBigger(int n) {
         IntList newList = new IntList();
-        newList.head = copyBiggerRecursive(head, n);
+        newList.first = copyBiggerRecursive(first, n);
         return newList;
     }
 

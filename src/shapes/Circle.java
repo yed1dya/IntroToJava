@@ -1,4 +1,4 @@
-package thursday;
+package shapes;
 
 import java.awt.*;
 

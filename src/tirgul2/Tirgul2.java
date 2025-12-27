@@ -1,6 +1,7 @@
+package tirgul2;
+
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Random;
 
 public class Tirgul2 {
     public static void problem1a(){

@@ -1,3 +1,5 @@
+package tirgul4;
+
 import java.util.Arrays;
 
 public class Tirgul4 {

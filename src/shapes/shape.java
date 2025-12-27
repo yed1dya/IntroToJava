@@ -1,7 +1,4 @@
-package thursday;
-
-import java.awt.*;
-import java.awt.geom.Point2D;
+package shapes;
 
 public interface shape {
 

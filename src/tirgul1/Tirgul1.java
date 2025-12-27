@@ -1,8 +1,8 @@
-import java.util.Objects;
+package tirgul1;
+
 import java.util.Scanner;
 public class Tirgul1 {
     public static void main(String[] args) {
-        problem8();
     }
 
     public static void problem1(){

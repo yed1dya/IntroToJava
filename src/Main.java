@@ -1,46 +1,37 @@
-import thursday.*;
-import thursday.Polygon;
-import thursday.Rectangle;
+import tirgul10.BST;
+import tirgul10.BT;
 
-import java.awt.*;
-import java.util.ArrayList;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Point p1 = new Point(1, 2), p2 = new Point(3, 4);
-        Square s1 = new Square(p1, 5), s2 = new Square(p2, 2);
-        Circle c1 = new Circle(p1, 4);
 
-        Square[] squares = {s1, s2};
+        Random random = new Random(42);
 
-        Rectangle r1 = new Rectangle(p1, p2);
+        BST tree = new BST();
 
-        Rectangle[] rectangles = {s1, s2, r1};
-
-        ArrayList<shape> shapes = new ArrayList<>();
-
-        Triangle t1 = new Triangle();
-
-        shapes.add(s1);
-        shapes.add(s2);
-        shapes.add(r1);
-        shapes.add(c1);
-
-        for (Square s : squares) {
-            System.out.println(s.area());
+        for (int i = 0; i < 10; i++) {
+            int r = random.nextInt(1, 100);
+            System.out.println("inserting " + r + ", ID: " + String.valueOf(r).hashCode());
+            tree.insert(String.valueOf(r));
+            System.out.println("size: " + tree.size());
+            tree.displayTree();
         }
 
         System.out.println();
-
-        for (Rectangle r : rectangles) {
-            System.out.println(r.area());
-        }
-
+        tree.printInOrder();
         System.out.println();
 
-        for (shape s : shapes) {
-            System.out.println(s.area());
-        }
+        tree.delete(1669);
+        System.out.println("\nsize: " + tree.size());
+        tree.displayTree();
 
+        tree.delete(1669);
+        System.out.println("\nsize: " + tree.size());
+        tree.displayTree();
+
+        tree.delete(1602);
+        System.out.println("\nsize: " + tree.size());
+        tree.displayTree();
     }
 }

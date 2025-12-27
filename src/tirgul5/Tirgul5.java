@@ -1,3 +1,5 @@
+package tirgul5;
+
 public class Tirgul5 {
     /**
      * swaps the elements at indices i, j in array A.

@@ -1,6 +1,6 @@
-package thursday;
+package shapes;
 
-public class Triangle implements shape {
+public class Triangle extends Polygon {
 
     // TODO
 

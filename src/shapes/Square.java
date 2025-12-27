@@ -1,6 +1,4 @@
-package thursday;
-
-import org.junit.jupiter.api.Test;
+package shapes;
 
 import java.awt.*;
 
