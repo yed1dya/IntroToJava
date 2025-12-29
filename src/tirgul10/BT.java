@@ -26,6 +26,17 @@ public class BT {
         return Node.size(root);
     }
 
+    public void insert(Node n) {
+        root = insert(root, n);
+    }
+
+    private static Node insert(Node root, Node newNode) {
+        if (root == null) return newNode;
+        if (Math.random() < 0.5) root.setLeft(insert(root.getLeft(), newNode));
+        else root.setRight(insert(root.getRight(), newNode));
+        return root;
+    }
+
     public void insert(String data) {
         root = insert(root, data);
     }
@@ -54,14 +65,82 @@ public class BT {
 
     private static int depth(Node n) {
         if (n == null) return 0;
-        return Math.max(depth(n.getLeft()), depth(n.getRight()));
+        return 1 + Math.max(depth(n.getLeft()), depth(n.getRight()));
+    }
+
+    public int numOfLeaves() {
+        return numOfLeaves(root);
+    }
+
+    private static int numOfLeaves(Node n) {
+        if (n == null) return 0;
+        if (n.isLeaf()) return 1;
+        return numOfLeaves(n.getLeft()) + numOfLeaves(n.getRight());
+    }
+
+    public int leavesInLevelRec(int level) {
+        if (level < 0) return 0;
+        return leavesInLevelRec(root, level);
+    }
+
+    private static int leavesInLevelRec(Node n, int level) {
+        if (n == null) return 0;
+        if (level == 0) return n.isLeaf() ? 1 : 0;
+        return leavesInLevelRec(n.getLeft(), level - 1) +
+                leavesInLevelRec(n.getRight(), level - 1);
+    }
+
+    public int levelWithMaxLeaves() {
+        if (root == null) return -1;
+        int maxLeaves = 0, maxLeavesLevel = -1;
+        for (int i = 0; i < depth(); i++) {
+            int leavesInCurrentLevel = leavesInLevelRec(i);
+            if (leavesInCurrentLevel > maxLeaves) {
+                maxLeaves = leavesInCurrentLevel;
+                maxLeavesLevel = i;
+            }
+        }
+        return maxLeavesLevel;
+    }
+
+    public int maxLevelWithNoLeaves() {
+        if (root == null) return -1;
+        int maxNoLeavesLevel = -1;
+        for (int i = 0; i < depth(); i++) {
+            int leavesInCurrentLevel = leavesInLevelRec(i);
+            if (leavesInCurrentLevel == 0) {
+                maxNoLeavesLevel = i;
+            }
+        }
+        return maxNoLeavesLevel;
+    }
+
+    public String longestPath() {
+        if (root == null || root.isLeaf()) return "";
+        String path = longestPath(root);
+        return path.substring(0, path.length() - 2);
+    }
+
+    private static String longestPath(Node n) {
+        if (n == null) return "";
+        if (n.isLeaf()) return "-";
+        String longestPathLeft = longestPath(n.getLeft()),
+                longestPathRight = longestPath(n.getRight());
+        if (longestPathLeft.length() >= longestPathRight.length()) {
+            return "L-" + longestPathLeft;
+        }
+        return "R-" + longestPathRight;
     }
 
     // Source: https://github.com/camluca/Samples/blob/4954a1ad1d9b034abbd3c23c4581324fb6b8fa57/Tree.java
     public void displayTree() {
+        System.out.println("size: " + size());
+        System.out.println("depth: " + depth());
+        System.out.println("number of leaves in tree: " + numOfLeaves());
+        System.out.println("longest path: " + longestPath());
         Stack<Node> globalStack = new Stack<>();
         globalStack.push(root);
-        int emptyLeaf = 32;
+        int emptyLeaf = 64;
         boolean isRowEmpty = false;
         System.out.println("****......................................................****");
         while(!isRowEmpty) {
@@ -87,7 +166,7 @@ public class BT {
             emptyLeaf /= 2;
             while(!localStack.isEmpty()) globalStack.push(localStack.pop());
         }
-        System.out.println("****......................................................****");
+        System.out.println("****......................................................****\n");
     }
 
 

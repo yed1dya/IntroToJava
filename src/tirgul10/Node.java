@@ -5,14 +5,23 @@ public class Node {
     private String data;
     private Node left, right;
 
-    public Node(String data, Node left, Node right) {
-        this.ID = data.hashCode();
+    public Node(int ID, String data, Node left, Node right) {
+        this.ID = ID;
+        this.data = data;
         this.left = left;
         this.right = right;
     }
 
+    public Node(String data, Node left, Node right) {
+        this(data.hashCode(), data, left, right);
+    }
+
     public Node(String data) {
         this(data, null, null);
+    }
+
+    public Node(int ID) {
+        this(ID, "customID", null, null);
     }
 
     public Node() {

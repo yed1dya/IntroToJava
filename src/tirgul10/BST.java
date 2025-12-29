@@ -3,12 +3,32 @@ package tirgul10;
 public class BST extends BT{
 
     @Override
+    public void insert(Node n) {
+        root = insert(root, n);
+    }
+
+    private static Node insert(Node parent, Node newNode) {
+        if (parent == null) return newNode;
+        if (parent.getID() == newNode.getID()) {
+            parent.overWriteFrom(newNode);
+            return parent;
+        }
+        if (newNode.getID() < parent.getID()) parent.setLeft(insert(parent.getLeft(), newNode));
+        else parent.setRight(insert(parent.getRight(), newNode));
+        return parent;
+    }
+
+    @Override
     public void insert(String data) {
         root = insert(root, data);
     }
 
     private static Node insert(Node n, String data) {
-        if (n == null || n.getID() == data.hashCode()) return new Node(data);
+        if (n == null) return new Node(data);
+        if (n.getID() == data.hashCode()) {
+            n.setData(data);
+            return n;
+        }
         if (data.hashCode() < n.getID()) n.setLeft(insert(n.getLeft(), data));
         else n.setRight(insert(n.getRight(), data));
         return n;
