@@ -118,12 +118,12 @@ public class BT {
     public String longestPath() {
         if (root == null || root.isLeaf()) return "";
         String path = longestPath(root);
-        return path.substring(0, path.length() - 2);
+        return path.substring(0, path.length() - 3);
     }
 
     private static String longestPath(Node n) {
         if (n == null) return "";
-        if (n.isLeaf()) return "-";
+        if (n.isLeaf()) return "--";
         String longestPathLeft = longestPath(n.getLeft()),
                 longestPathRight = longestPath(n.getRight());
         if (longestPathLeft.length() >= longestPathRight.length()) {
